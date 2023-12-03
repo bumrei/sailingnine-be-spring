@@ -41,6 +41,4 @@ out/
 /gradle/wrapper/gradle-wrapper.properties
 /gradlew
 /gradlew.bat
-/src/main/java/com/cicd/sailingninebespring/SailingnineBeSpringApplication.java
-/src/test/java/com/cicd/sailingninebespring/SailingnineBeSpringApplicationTests.java
 /settings.gradle
