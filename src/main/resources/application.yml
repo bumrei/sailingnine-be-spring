@@ -1,4 +1,4 @@
-#profile
+#profile setting
 spring:
   profiles:
     group:
@@ -9,3 +9,31 @@ spring:
       prod:
         - prod
     default: local
+
+#Actuator Security Setting - Referenced : 우아한기술블로그 - https://techblog.woowahan.com/9232/
+management:
+  endpoints:
+    # 1. EndPoint All Disable 처리
+    enabled-by-default: false
+
+    # 2. Exclude all endpoint for JMX and Expose specific endpoints
+    jmx:
+      exposure:
+        exclude: "*"
+    web:
+      exposure:
+        include: health,info,beans
+
+      # 3. Actuator Default path setting
+      base-path: /rohCheck
+
+  # 4. Enable specific endpoints
+  endpoint:
+    info:
+      enabled: true
+    health:
+      enabled: true
+
+  # 실행 포트 지정
+  server:
+    port: 8080
