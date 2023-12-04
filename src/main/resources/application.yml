@@ -22,7 +22,7 @@ management:
         exclude: "*"
     web:
       exposure:
-        include: health,info,beans
+        include: "health"
 
       # 3. Actuator Default path setting
       base-path: /rohCheck
@@ -33,7 +33,8 @@ management:
       enabled: true
     health:
       enabled: true
+      show-details: always
 
   # 실행 포트 지정
-  server:
-    port: 8080
+#  server:
+#    port: 8080
