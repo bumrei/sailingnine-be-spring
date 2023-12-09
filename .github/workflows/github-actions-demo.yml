@@ -17,6 +17,25 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
+      ## gradlew 의 권한을 줍니다.
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      ## gradle build
+      - name: Build with Gradle
+        run: ./gradlew clean build --debug
+
+      ## 이미지 태그에 시간 설정을 하기위해서 현재 시간을 가져옵니다.
+      - name: Get current time
+        uses: 1466587594/get-current-time@v2
+        id: current-time
+        with:
+          format: YYYY-MM-DDTHH-mm-ss
+          utcOffset: "+09:00"
+
+      - name: Show Current Time
+        run: echo "CurrentTime=${{steps.current-time.outputs.formattedTime}}"
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -28,15 +47,9 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: build gradle
-        run: ./gradlew bootJar
-
-      - name: file structure check
-        run: ls -al
-
       - name: Build, tag, and push image to Amazon ECR
         run: |
-          docker build -t sailingnine .
+          docker build -t sailingnine-cicd-springbood .
           docker tag sailingnine:latest 297163329900.dkr.ecr.ap-northeast-2.amazonaws.com/sailingnine:latest
           docker push 297163329900.dkr.ecr.ap-northeast-2.amazonaws.com/sailingnine:latest
 
