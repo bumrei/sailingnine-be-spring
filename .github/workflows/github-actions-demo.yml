@@ -28,7 +28,10 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: file-structure-check
+      - name: build gradle
+        run: ./gradlew bootJar
+
+      - name: file structure check
         run: ls -al
 
       - name: Build, tag, and push image to Amazon ECR
