@@ -30,9 +30,9 @@ jobs:
 
       - name: Build, tag, and push image to Amazon ECR
         run: |
-          push command 1.
-          push command 2.
-          push command 3.
+          docker build -t sailingnine .
+          docker tag sailingnine:latest 297163329900.dkr.ecr.ap-northeast-2.amazonaws.com/sailingnine:latest
+          docker push 297163329900.dkr.ecr.ap-northeast-2.amazonaws.com/sailingnine:latest
 
 
 
