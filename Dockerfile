@@ -7,9 +7,9 @@
 FROM openjdk:17-oracle AS builder
 WORKDIR /workspace/app
 
-COPY gradle gradle
-COPY build.gradle settings.gradle gradlew ./
-COPY src src
+RUN microdnf install findutils
+
+RUN apk update && apk add findutils
 
 RUN ./gradlew bootJar
 RUN mkdir -p build/libs/dependency && (cd build/libs/dependency; jar -xf ../*.jar)
