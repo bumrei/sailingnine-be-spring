@@ -4,7 +4,7 @@
 #ENTRYPOINT ["java","-jar","/app.jar"]
 
 
-FROM openjdk:17.0.7-jdk-slim-buster AS builder
+FROM openjdk:17.0.7 AS builder
 WORKDIR /workspace/app
 
 COPY gradle gradle
@@ -15,7 +15,7 @@ RUN ./gradlew bootJar
 RUN mkdir -p build/libs/dependency && (cd build/libs/dependency; jar -xf ../*.jar)
 
 
-FROM openjdk:17.0.7-jdk-slim-buster
+FROM openjdk:17.0.7
 
 WORKDIR /workspace/app
 COPY --from=builder /workspace/app/build/libs/healthcheck-*.jar app.jar
