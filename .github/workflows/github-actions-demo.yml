@@ -45,6 +45,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
 
+    # build gradle
 
       - name: Login to Amazon ECR
         id: login-ecr
