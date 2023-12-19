@@ -1,4 +1,4 @@
-package com.cicd.sailingninebespring.controller;
+package com.cicd.sailingninebespring.healthCheck.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
