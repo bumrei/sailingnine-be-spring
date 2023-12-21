@@ -1,9 +1,7 @@
 package com.cicd.sailingninebespring.payment.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.cicd.sailingninebespring.order.entity.Orders;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -15,9 +13,16 @@ import lombok.*;
 public class Payment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long paymentIdx;
+    @GeneratedValue
+    @Column(name = "payment_id")
+    private Long paymentId;
 
     private String paymentStatus;
+
+    private int totalPrice;
+
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    private Orders order;
 
 }

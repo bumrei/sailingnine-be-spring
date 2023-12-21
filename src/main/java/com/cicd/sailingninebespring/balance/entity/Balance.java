@@ -1,5 +1,6 @@
 package com.cicd.sailingninebespring.balance.entity;
 
+import com.cicd.sailingninebespring.user.entity.Member;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -16,10 +17,13 @@ import java.time.LocalDateTime;
 public class Balance {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long balanceIdx;
+    @GeneratedValue
+    @Column(name = "balance_id")
+    private Long balanceId;
 
-    private Long userIdx;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private Member user;
 
     private Long amounts;
 

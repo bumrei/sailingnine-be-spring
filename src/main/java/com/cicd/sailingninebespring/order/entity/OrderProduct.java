@@ -1,10 +1,10 @@
 package com.cicd.sailingninebespring.order.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.cicd.sailingninebespring.product.entity.Product;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -15,8 +15,19 @@ import lombok.*;
 public class OrderProduct {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderProductIdx;
+    @GeneratedValue
+    @Column(name = "order_product_id")
+    private Long orderProductId;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Orders order;
+
+    private LocalDateTime orderCreateDate;
 
 
 }

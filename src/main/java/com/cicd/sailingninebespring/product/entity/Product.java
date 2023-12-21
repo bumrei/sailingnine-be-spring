@@ -1,9 +1,6 @@
 package com.cicd.sailingninebespring.product.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -15,8 +12,9 @@ import lombok.*;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productIdx;
+    @GeneratedValue
+    @Column(name = "product_id")
+    private Long productId;
 
     private String productName;
 
