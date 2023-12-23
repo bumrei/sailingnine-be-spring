@@ -17,8 +17,6 @@ public class Member {
     @Column(name = "user_id")
     private Long userId;
 
-    private String UserName;
+    private String userName;
 
-    @OneToOne(mappedBy = "user")
-    private Balance balance;
 }
