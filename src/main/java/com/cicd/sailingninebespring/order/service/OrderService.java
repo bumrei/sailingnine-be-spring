@@ -1,15 +1,13 @@
 package com.cicd.sailingninebespring.order.service;
 
-import com.cicd.sailingninebespring.order.entity.OrderProduct;
-import com.cicd.sailingninebespring.order.entity.Orders;
-import org.springframework.transaction.annotation.Transactional;
+import com.cicd.sailingninebespring.order.service.domain.Orders;
 
-@Transactional
 public interface OrderService {
 
-    // 주문 진행
-    Long doOrders(Orders orders);
+    // Order 조회
+    Orders getOrder(Long memberId, Long orderId);
 
-    // 주문 상세 조회 - OrderProduct
-    OrderProduct getOrderDetail(Long orderIdx);
+    // Order 주문 넣기
+    Long requestOrder(Orders order);
+
 }
